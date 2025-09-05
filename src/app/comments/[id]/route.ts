@@ -30,15 +30,6 @@ export async function PATCH(
 }
 
 
-// export async function DELETE({params} : { params: Promise<{ id: string}>}){
-//     const id = (await params).id;
-//     const deletedArray = commentsData.filter(c => c.id !== parseInt(id));
-//     return new Response(JSON.stringify(deletedArray), {
-//         headers: { "Content-Type": "application/json" },
-//         status: 200,
-//       });
-// }
-
 export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> }
