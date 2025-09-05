@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { commentsData } from "./data";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 export async function GET(request: NextRequest) {
   // const searchParams = request.nextUrl.searchParams;
   // const query = searchParams.get("search");
@@ -12,9 +12,18 @@ export async function GET(request: NextRequest) {
   const headerList = await headers();
   console.log(headerList.get("Authorization"));
   // return Response.json(commentsData);
+
+  const theme = request.cookies.get("theme");
+  console.log("theme", theme);
+
+  const cookieList = await cookies();
+  cookieList.set("sessionId", "123456");
+  console.log(cookieList.get("sessionId"));
+
   return new Response("<h1>Hello World</h1>", {
     headers: {
       "content-type": "text/html",
+      "Set-Cookie": "theme = dark",
     },
   });
 
